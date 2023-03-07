@@ -22,6 +22,7 @@ package server
 
 import (
 	"context"
+	"fmt"
 	"io"
 	"net"
 	"sync"
@@ -78,6 +79,7 @@ func (c *Conn) WriteRead(req []byte) (body []byte, err error) {
 }
 
 func (c *Conn) Write(data []byte) error {
+	fmt.Println("***TCP SERVER CONN 82")
 	if len(data) > 0 {
 		select {
 		case <-c.closeChan:

@@ -21,6 +21,7 @@
 package client
 
 import (
+	"fmt"
 	"io"
 	"net"
 	"sync"
@@ -90,6 +91,7 @@ func (c *AsyncClient) WriteRead(req []byte) (body []byte, err error) {
 
 // Write data should be without header if Encoder != nil
 func (c *AsyncClient) Write(data []byte) error {
+	fmt.Println("***TCP CLIENT ASYNC 94")
 	if len(data) > 0 {
 		select {
 		case <-c.closeChan:

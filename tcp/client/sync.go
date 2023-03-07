@@ -108,6 +108,7 @@ func (c *Client) WriteRead(data []byte) (body []byte, err error) {
 
 // Write using HeaderCodec
 func (c *Client) Write(data []byte) error {
+	fmt.Println("***TCP CLIENT SYNC 111")
 	data = c.opts.HeaderCodec.Encode(data)
 	_ = c.conn.SetWriteDeadline(c.getWriteDeadLine())
 	if _, err := c.conn.Write(data); err != nil {
